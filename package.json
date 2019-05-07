@@ -1,6 +1,6 @@
 {
   "name": "react-hookable-store",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "State Management like Redux",
   "license": "MIT",
   "main": "./dist/index.js",
