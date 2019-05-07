@@ -1,0 +1,13 @@
+# dependencies
+/node_modules
+
+.prettierrc
+yarn.lock
+tsconfig.json
+
+/examples
+/src
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
