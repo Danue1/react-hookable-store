@@ -4,7 +4,7 @@ type Reducers<Store> = Readonly<{ [Key in keyof Store]: Reducer<Store[Key], any>
 
 export const combineReducers = <Store extends Record<string, any>, Action>(reducers: Reducers<Store>) => {
   const reducer: Reducer<Store, Action> = (store = {} as Store, action) => {
-    const nextStore: Partial<Store> = {};
+    const nextStore = {} as Store;
 
     let isChanged = false;
 
@@ -18,7 +18,7 @@ export const combineReducers = <Store extends Record<string, any>, Action>(reduc
       }
     }
 
-    return isChanged ? (nextStore as Store) : store;
+    return isChanged ? nextStore : store;
   };
 
   return reducer;
