@@ -4,7 +4,7 @@ type Reducers<Store> = Readonly<{ [Key in keyof Store]: Reducer<Store[Key], any>
 
 export const combineReducers = <Store extends Record<string, any>, Action>(reducers: Reducers<Store>) => {
   const reducer: Reducer<Store, Action> = (store = {} as Store, action) => {
-    const nextStore: Partial<any> = {};
+    const nextStore: Partial<Store> = {};
 
     let isChanged = false;
 
