@@ -1,15 +1,25 @@
-import { createElement, createContext, Dispatch, FC, Reducer, useContext, useReducer, useMemo } from "react";
+import {
+  createElement,
+  createContext,
+  Dispatch,
+  FC,
+  Reducer,
+  useContext,
+  useReducer,
+  useMemo,
+  DependencyList
+} from "react";
 
 export const createStore = <S, A>(reducer: Reducer<S, A>) => {
   const Context = createContext<[S, Dispatch<A>]>(null as any);
 
   type Selector<SS> = (store: S) => SS;
-  const useStore = <SS>(selector: Selector<SS>, dependencies?: any[]): [SS, Dispatch<A>] => {
+  const useStore = <SS>(selector: Selector<SS>, dependencies?: DependencyList): [SS, Dispatch<A>] => {
     const [store, dispatch] = useContext(Context);
     return useMemo(() => [selector(store), dispatch], dependencies);
   };
   const useDispatch = () => useContext(Context)[1];
-  const useSelector = <SS>(selector: Selector<SS>, dependencies?: any[]) => {
+  const useSelector = <SS>(selector: Selector<SS>, dependencies?: DependencyList) => {
     const [store] = useContext(Context);
     return useMemo(() => selector(store), dependencies);
   };
